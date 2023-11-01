@@ -1,26 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {CSSProperties, useState} from 'react';
 import './App.css';
+import {GameState} from "./GameState";
+import {Button, Container, Stack} from "@mui/material";
+import GameHeader from "./GameHeader";
+import PlayerCreation from "./PlayerCreation";
+
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [gameState, setGameState] = useState<GameState>(GameState.NEW);
+
+    return (
+        <Container maxWidth="sm">
+            <Stack
+                spacing={{xs: 1, sm: 2}}
+                justifyContent="center"
+                alignItems="center"
+                useFlexGap>
+                <GameHeader/>
+                <div>
+                    {gameState === GameState.NEW && (
+                        <Button onClick={() => setGameState(GameState.PLAYER_CREATION)}>
+                            Start
+                        </Button>
+                    )}
+                    {gameState === GameState.PLAYER_CREATION && (
+                        <PlayerCreation/>
+                    )}
+                </div>
+            </Stack>
+        </Container>
+    );
 }
 
 export default App;
