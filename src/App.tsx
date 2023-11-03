@@ -23,20 +23,18 @@ function App() {
     <>
       <CssBaseline />
       <Container maxWidth="sm">
-        <Stack
-          spacing={{ xs: 1, sm: 2 }}
-          justifyContent="center"
-          alignItems="center"
-          useFlexGap
-        >
+        <Stack justifyContent="center" alignItems="center" useFlexGap>
           <header>
-            <Box sx={{ my: 3 }}>
+            <Box sx={{ my: 4 }}>
               <GameHeader gameState={gameState} />
             </Box>
           </header>
           <main>
             {gameState === GameState.NEW && (
-              <Button onClick={() => setGameState(GameState.PLAYER_CREATION)}>
+              <Button
+                variant={"contained"}
+                onClick={() => setGameState(GameState.PLAYER_CREATION)}
+              >
                 Start
               </Button>
             )}
