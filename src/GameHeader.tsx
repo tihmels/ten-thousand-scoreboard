@@ -5,14 +5,14 @@ import "./GameHeader.css";
 
 interface IGameHeaderProps {
   gameState: GameState;
-  numberOfIcons?: number;
 }
 
-const GameHeader: FC<IGameHeaderProps> = ({ gameState, numberOfIcons = 6 }) => {
+const GameHeader: FC<IGameHeaderProps> = ({ gameState }) => {
   if (gameState === "STARTED") return null;
+
   return (
     <>
-      {[...Array(numberOfIcons)].map((_, index) => (
+      {Array.from({ length: 6 }, (_, index) => (
         <CasinoOutlinedIcon
           className="spin-and-scale"
           key={index}
